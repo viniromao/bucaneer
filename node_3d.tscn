@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://bafxlkaxylhis"]
+
+[ext_resource type="PackedScene" uid="uid://baldiy6sd0rph" path="res://3dObjects/ground.glb" id="1_4eej5"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_d040t"]
+[ext_resource type="PackedScene" uid="uid://c02mnaltexn1q" path="res://3dObjects/boat.glb" id="2_u1hny"]
+[ext_resource type="PackedScene" uid="uid://d3f1vrg4x27xa" path="res://3dObjects/caravel2.glb" id="3_61ed6"]
+[ext_resource type="PackedScene" uid="uid://cwddbjk0umw6b" path="res://3dObjects/caravel.glb" id="4_egyf5"]
+[ext_resource type="Script" path="res://scripts/boat.gd" id="4_qbn0d"]
+[ext_resource type="Shader" path="res://shaders/node_3d.gdshader" id="6_5k5fe"]
+[ext_resource type="Texture2D" uid="uid://cqm1uvekiv5fp" path="res://sprites/icon.svg" id="7_43ylh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2kjft"]
+shader = ExtResource("6_5k5fe")
+shader_parameter/pixelate = 358.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 16.4595, 31.6046, 31.934)
+projection = 1
+current = true
+size = 60.0
+script = ExtResource("1_d040t")
+
+[node name="ground" parent="." instance=ExtResource("1_4eej5")]
+transform = Transform3D(159.098, 0, 0, 0, 1, 0, 0, 0, 235.372, -1.42695, -1.40208, 2.26827)
+
+[node name="boat" parent="." instance=ExtResource("2_u1hny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3548, 0.92778, 1.02147)
+script = ExtResource("4_qbn0d")
+rotation_speed = 0.05
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.159468, 0.987203, 0, -0.987203, -0.159468, 0, 72.5519, 79.2549)
+
+[node name="caravel2" parent="." instance=ExtResource("3_61ed6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5908, 0, -6.401)
+script = ExtResource("4_qbn0d")
+rotation_speed = 0.01
+
+[node name="caravel" parent="." instance=ExtResource("4_egyf5")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 18.9881, 0.623307, 4.9408)
+script = ExtResource("4_qbn0d")
+speed = 25.0
+rotation_speed = 0.01
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2kjft")
+position = Vector2(577, 329.5)
+scale = Vector2(9.09375, 5.21094)
+texture = ExtResource("7_43ylh")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.490995, 0.869259, -0.0575534, 0.862027, 0.494327, 0.11203, 0.125833, 0.00539346, -0.992037, 0, 113.21, 0)

@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://bafxlkaxylhis"]
+
+[ext_resource type="Script" path="res://camera.gd" id="1_sbb4q"]
+[ext_resource type="Shader" path="res://shaders/node_3d.gdshader" id="2_1085c"]
+[ext_resource type="Texture2D" uid="uid://cqm1uvekiv5fp" path="res://sprites/icon.svg" id="2_el1bv"]
+[ext_resource type="Script" path="res://scripts/boat.gd" id="2_tynx6"]
+[ext_resource type="PackedScene" uid="uid://bkhv4dn8oishs" path="res://3dObjects/ground.glb" id="4_f2fvx"]
+[ext_resource type="PackedScene" uid="uid://bsnsx1os4da7o" path="res://3dObjects/caravel.glb" id="6_eu7qo"]
+[ext_resource type="PackedScene" uid="uid://ch5yq38y0hmri" path="res://3dObjects/caravek.glb" id="7_3yqtf"]
+[ext_resource type="PackedScene" uid="uid://bfjbbd357r2s0" path="res://3dObjects/boat.glb" id="7_57uox"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lq8a"]
+shader = ExtResource("2_1085c")
+shader_parameter/pixelate = 334.0
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1.06028, 56.752, 44.5537)
+projection = 1
+size = 120.0
+far = 6000.0
+script = ExtResource("1_sbb4q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.486039, 0.796586, 0.359469, -0.595411, 0.000738555, 0.803421, 0.639728, -0.604525, 0.474655, 0, 257.469, 30.0573)
+
+[node name="shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6lq8a")
+position = Vector2(570.5, 321.5)
+scale = Vector2(9.19531, 5.08594)
+texture = ExtResource("2_el1bv")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999602, -0.0282008, 0, 0.0282008, 0.999602, 2.49263, 3.98152, 4.25177)
+
+[node name="sea" parent="." instance=ExtResource("4_f2fvx")]
+transform = Transform3D(281.86, 0, 0, 0, 1, 0, 0, 0, 505.513, -0.326, 0, 1.622)
+
+[node name="boat2" parent="." instance=ExtResource("7_57uox")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.045, 1.5, -2.222)
+script = ExtResource("2_tynx6")
+
+[node name="caravel" parent="." instance=ExtResource("6_eu7qo")]
+transform = Transform3D(-0.0635768, 0, -0.189626, 0, 0.2, 0, 0.189626, 0, -0.0635768, -8.81532, -0.0684328, -6.2362)
+script = ExtResource("2_tynx6")
+
+[node name="caravek" parent="." instance=ExtResource("7_3yqtf")]
+transform = Transform3D(0.962611, 0, -0.270886, 0, 1, 0, 0.270886, 0, 0.962611, 4.60283, -0.65773, 2.25782)
+script = ExtResource("2_tynx6")

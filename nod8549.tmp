@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bafxlkaxylhis"]
+
+[ext_resource type="Shader" path="res://node_3d.gdshader" id="2_1085c"]
+[ext_resource type="Texture2D" uid="uid://cqm1uvekiv5fp" path="res://icon.svg" id="2_el1bv"]
+[ext_resource type="Script" path="res://boat.gd" id="2_tynx6"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="3_6tw8n"]
+[ext_resource type="PackedScene" uid="uid://bkhv4dn8oishs" path="res://ground.glb" id="4_f2fvx"]
+[ext_resource type="PackedScene" uid="uid://bfjbbd357r2s0" path="res://boat.glb" id="7_57uox"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lq8a"]
+shader = ExtResource("2_1085c")
+shader_parameter/pixelate = 246.0
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5.27055, 9.90086, 5.59149)
+projection = 1
+size = 30.0
+far = 6000.0
+script = ExtResource("3_6tw8n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.829506, 0.558498, 0, -0.558498, 0.829506, 0, 10.5236, 6.99614)
+
+[node name="shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6lq8a")
+position = Vector2(565.5, 321)
+scale = Vector2(9.11719, 5.09375)
+texture = ExtResource("2_el1bv")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999602, -0.0282008, 0, 0.0282008, 0.999602, 2.49263, 3.98152, 4.25177)
+
+[node name="sea" parent="." instance=ExtResource("4_f2fvx")]
+transform = Transform3D(46.8292, 0, 0, 0, 1, 0, 0, 0, 70.8266, -0.326, 0, 1.622)
+
+[node name="boat2" parent="." instance=ExtResource("7_57uox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04491, 1.05005, -2.22219)
+script = ExtResource("2_tynx6")

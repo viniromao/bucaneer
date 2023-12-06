@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciikh8hb7y6wp"]
+
+[ext_resource type="Texture2D" uid="uid://cmno51tnjitgb" path="res://sprites/bubble.png" id="1_s518x"]
+[ext_resource type="Script" path="res://scripts/boat_foam.gd" id="2_2vw6s"]
+
+[node name="foam" type="Sprite3D"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0.626519, 4.50456, 0)
+texture = ExtResource("1_s518x")
+script = ExtResource("2_2vw6s")
