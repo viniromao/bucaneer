@@ -13,7 +13,8 @@ func _process(delta):
 	global_position.x = global_position.x + initial_speed
 	global_position.y += initial_y_speed
 	
-	if global_position.y < 0:  # Threshold for 'stopping'
+	if global_position.y < 0: 
+		print(global_position)
 		queue_free()
 	
 

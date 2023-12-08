@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0.286275, 0, 0.0941176, 1)
 boot_splash/show_image=false
 config/icon="res://sprites/icon.svg"
 
+[display]
+
+window/size/mode=2
+
 [input]
 
 move_forward={
