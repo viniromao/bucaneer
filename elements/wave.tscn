@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgq7rf1f8204k"]
+
+[ext_resource type="Texture2D" uid="uid://cmno51tnjitgb" path="res://sprites/bubble.png" id="1_bisbd"]
+[ext_resource type="Script" path="res://scripts/wave.gd" id="1_niuph"]
+[ext_resource type="Script" path="res://scripts/wave_timer.gd" id="3_rdrfn"]
+
+[node name="wave" type="Node3D"]
+script = ExtResource("1_niuph")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+texture = ExtResource("1_bisbd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+script = ExtResource("3_rdrfn")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

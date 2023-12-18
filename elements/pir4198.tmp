@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl5nl6l72p2kc"]
+
+[ext_resource type="Script" path="res://scripts/pirate_frames.gd" id="1_q653s"]
+
+[node name="pirate_frames" type="BoxContainer"]
+scale = Vector2(5, 8.16)
+script = ExtResource("1_q653s")

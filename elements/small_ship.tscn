@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2tyj4n8dmvd3"]
+
+[ext_resource type="Script" path="res://scripts/small_ship.gd" id="1_4akux"]
+[ext_resource type="PackedScene" uid="uid://cwddbjk0umw6b" path="res://3dObjects/caravel.glb" id="1_nwwk4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjqc4"]
+size = Vector3(0.390625, 0.53418, 0.859375)
+
+[node name="small_ship" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_4akux")
+rotation_speed = 0.01
+
+[node name="mesh" parent="." instance=ExtResource("1_nwwk4")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.199697, 1.55169, 1.74214)
+shape = SubResource("BoxShape3D_qjqc4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qrixu6by3ay"]
+
+[ext_resource type="Script" path="res://scripts/cannon_ball_wave.gd" id="1_djscp"]
+
+[node name="cannon_ball_wave" type="Node3D"]
+script = ExtResource("1_djscp")

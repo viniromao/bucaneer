@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://lk7me7jbqjra"]
+
+[ext_resource type="Script" path="res://scripts/pirate_frames.gd" id="1_q653s"]
+[ext_resource type="PackedScene" uid="uid://uertsrkmvpf4" path="res://elements/pirate_1.tscn" id="2_6rp8d"]
+[ext_resource type="PackedScene" uid="uid://nmv3xy1kgh28" path="res://elements/pirate_2.tscn" id="3_5wrxe"]
+[ext_resource type="PackedScene" uid="uid://dx5225xtbq2wr" path="res://elements/pirate_3.tscn" id="4_n5w8e"]
+
+[node name="pirate_frames" type="BoxContainer"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_q653s")
+
+[node name="pirate_1" parent="." instance=ExtResource("2_6rp8d")]
+layout_mode = 2
+
+[node name="pirate_2" parent="." instance=ExtResource("3_5wrxe")]
+layout_mode = 2
+
+[node name="pirate_3" parent="." instance=ExtResource("4_n5w8e")]
+layout_mode = 2

@@ -15,7 +15,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			if size > 20:
+			if size > 100:
 				size -= zoom_speed
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			# Increase FOV to zoom out

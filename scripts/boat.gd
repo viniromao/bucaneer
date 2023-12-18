@@ -2,46 +2,27 @@ extends Node3D
 
 @export var speed = 5.0
 @export var rotation_speed = 5.0
-var boat_foam
-var cannon_ball
-var foam_cool_down
-var foam_timeout
+var foam_cool_down  = 0
+var foam_timeout= 5
 var amplitude = 2
 var frequency = 1  
 var time_passed = 0.0
+var reloaded = true
+var is_ai = true
+var cannons_right = 0
+var cannons_left = 0
 
-func _ready():
-	boat_foam = load("res://elements/boat_foam.tscn")
-	cannon_ball = load("res://elements/cannon_ball.tscn")
-	foam_cool_down = 0
-	foam_timeout = 5
-	shoot_cannon_ball(get_facing_direction_y_rotated_90())
-	
-	
 
+var boat_foam = load("res://elements/boat_foam.tscn")
+var explosion = load("res://elements/explosion.tscn")
+var cannon_ball = load("res://elements/cannon_ball.tscn")
+	
 func _process(delta):
-	time_passed += delta
-	var angle = sin(time_passed * frequency) * amplitude
-	rotation.x = deg_to_rad(angle)
-	
-	
-	var direction = Vector3.ZERO
+	boatFloat(delta)
+	movementSystem(delta)
+	inputSystem()
 
-	if Input.is_action_pressed("move_forward"):
-		direction.z += -1
-	if Input.is_action_pressed("move_left"):
-		direction.x += -1
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-		
-	if direction.z != 0:
-		translate(Vector3(0,0,direction.z).normalized() * speed * delta)
-		instantiate_foam()
-		
-		
-		if direction.z != 0:
-			rotate(Vector3(0,-direction.x,0).normalized(), rotation_speed)
-			
+	
 func instantiate_foam():
 	foam_cool_down += 1
 	if (foam_cool_down > foam_timeout):
@@ -71,8 +52,58 @@ func mirror_vector(original_vector: Vector3) -> Vector3:
 	
 	return mirrored_vector
 	
+func inputSystem():
+	if is_ai:
+		return
+	if Input.is_key_pressed(KEY_E) and cannons_right > 0:
+		shoot_cannon_ball(get_facing_direction_y_rotated_90())
+	if Input.is_key_pressed(KEY_Q) and cannons_left > 0:
+		shoot_cannon_ball(mirror_vector(get_facing_direction_y_rotated_90()))
+		
 func shoot_cannon_ball(facing_direction):
-	var cannon_ball = cannon_ball.instantiate()
-	cannon_ball.initialize(Vector3(global_position.x, 2, global_position.z), facing_direction)
-	get_parent().add_child.call_deferred(cannon_ball)
+	if reloaded == true:
+		var cannon_ball_instance = cannon_ball.instantiate()
+		cannon_ball_instance.initialize(Vector3(global_position.x, 2, global_position.z), facing_direction)
+		get_parent().add_child.call_deferred(cannon_ball_instance)
+		reloaded = false
+	
+func boatFloat(delta):
+	time_passed += delta
+	var angle = sin(time_passed * frequency) * amplitude
+	rotation.x = deg_to_rad(angle)
+	
+func movementSystem(delta):
+	var direction = Vector3.ZERO
 
+	if !is_ai:
+		if Input.is_action_pressed("move_forward"):
+			direction.z += -1
+		if Input.is_action_pressed("move_left"):
+			direction.x += -1
+		if Input.is_action_pressed("move_right"):
+			direction.x += 1
+	else:
+		direction.z += -1
+		direction.x += 1
+		
+		
+	if direction.z != 0:
+		translate(Vector3(0,0,direction.z) * speed * delta)
+		instantiate_foam()
+		
+		if direction.z != 0:
+			rotate(Vector3(0,-direction.x,0), rotation_speed)
+			
+func make_ai_things():
+	pass
+
+func cannon_ball_hit(position: Vector3):
+	hit_explosion(position)
+	
+func hit_explosion(position: Vector3):
+	
+		# Instance the object
+		var instance = explosion.instantiate()
+		get_parent().add_child(instance)
+		
+		instance.hit_explosion(position)

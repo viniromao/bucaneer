@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://r5kyco4aq2co"]
+
+[ext_resource type="Script" path="res://scripts/small_caravel.gd" id="1_hqgb0"]
+[ext_resource type="PackedScene" uid="uid://d3f1vrg4x27xa" path="res://3dObjects/caravel2.glb" id="2_5gwyl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tgnf"]
+size = Vector3(3.13794, 4.45923, 8.57007)
+
+[node name="small_caravel" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_hqgb0")
+rotation_speed = 0.005
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132935, 3.07288, 0.856072)
+shape = SubResource("BoxShape3D_2tgnf")
+
+[node name="caravel2" parent="." instance=ExtResource("2_5gwyl")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

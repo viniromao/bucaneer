@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://or5s72hjg118"]
+
+[ext_resource type="Script" path="res://elements/explosion.gd" id="1_0qbp8"]
+
+[node name="explosion" type="Node3D"]
+script = ExtResource("1_0qbp8")

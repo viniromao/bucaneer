@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://uertsrkmvpf4"]
+
+[ext_resource type="Texture2D" uid="uid://kd4u0p0m838k" path="res://sprites/Untitled.png" id="1_fw1d4"]
+[ext_resource type="Texture2D" uid="uid://i76ekbs2xj0m" path="res://sprites/frame.png" id="2_sc5lh"]
+
+[node name="pirate_1" type="Button"]
+custom_minimum_size = Vector2(17.335, 14.455)
+offset_right = 167.0
+offset_bottom = 167.0
+scale = Vector2(10, 10)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 34.0
+offset_top = 28.0
+offset_right = 290.0
+offset_bottom = 284.0
+scale = Vector2(0.768988, 0.768988)
+texture = ExtResource("1_fw1d4")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_sc5lh")

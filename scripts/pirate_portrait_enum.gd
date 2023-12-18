@@ -1,0 +1,11 @@
+enum pirate_portrait {
+	PIRATE_1,
+	PIRATE_2,
+	PIRATE_3,
+	PIRATE_4,
+	PIRATE_5,
+	PIRATE_6,
+	PIRATE_7,
+	PIRATE_8,
+	PIRATE_9
+}

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkv0nk313ty6s"]
+
+[ext_resource type="Texture2D" uid="uid://b1injh1pnobmv" path="res://sprites/pirate8.png" id="1_2t1l7"]
+[ext_resource type="Texture2D" uid="uid://i76ekbs2xj0m" path="res://sprites/frame.png" id="2_nyd5g"]
+
+[node name="pirate_1" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 167.0
+offset_bottom = 167.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 28.0
+offset_right = 290.0
+offset_bottom = 284.0
+scale = Vector2(0.768988, 0.768988)
+texture = ExtResource("1_2t1l7")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_nyd5g")
